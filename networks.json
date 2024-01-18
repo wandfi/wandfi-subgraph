@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "ETH_Vault": {
+      "address": "0xFdCBa9e5b0897bD5aB2b09F545108150Ce38109B",
+      "startBlock": 5105835
+    }
+  }
+}

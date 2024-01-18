@@ -1,0 +1,53 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ETH_Vault
+    network: sepolia
+    source:
+      address: "0xFdCBa9e5b0897bD5aB2b09F545108150Ce38109B"
+      abi: ETH_Vault
+      startBlock: 5105835
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AssetRedeemedWithLeveragedToken
+        - AssetRedeemedWithPairs
+        - AssetRedeemedWithUSB
+        - LeveragedTokenBurned
+        - LeveragedTokenMinted
+        - UpdateParamValue
+        - UsbBurned
+        - UsbMinted
+        - UsbToLeveragedTokens
+        - YieldsSettlement
+      abis:
+        - name: ETH_Vault
+          file: ./abis/ETH_Vault.json
+      eventHandlers:
+        - event: AssetRedeemedWithLeveragedToken(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleAssetRedeemedWithLeveragedToken
+        - event: AssetRedeemedWithPairs(indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleAssetRedeemedWithPairs
+        - event: AssetRedeemedWithUSB(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleAssetRedeemedWithUSB
+        - event: LeveragedTokenBurned(indexed address,uint256,uint256,uint256)
+          handler: handleLeveragedTokenBurned
+        - event: LeveragedTokenMinted(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleLeveragedTokenMinted
+        - event: UpdateParamValue(indexed bytes32,uint256)
+          handler: handleUpdateParamValue
+        - event: UsbBurned(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleUsbBurned
+        - event: UsbMinted(indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleUsbMinted
+        - event: UsbToLeveragedTokens(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleUsbToLeveragedTokens
+        - event: YieldsSettlement(uint256,uint256)
+          handler: handleYieldsSettlement
+      file: ./src/eth-vault.ts
