@@ -3,6 +3,12 @@
     "ETH_Vault": {
       "address": "0xFdCBa9e5b0897bD5aB2b09F545108150Ce38109B",
       "startBlock": 5105835
+    },
+    "ETH_PtyPoolBelowAARS": {
+      "address": "0xF802796b6612378Ed2f4881b5484DBf36e6fC112"
+    },
+    "ETH_PtyPoolAboveAARU": {
+      "address": "0xDFf2c22E41dd9F286E0Ec9cec3372B5F8D283AD1"
     }
   }
 }

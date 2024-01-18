@@ -2,7 +2,7 @@ specVersion: 1.0.0
 indexerHints:
   prune: auto
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: ETH_Vault
@@ -28,7 +28,7 @@ dataSources:
         - YieldsSettlement
       abis:
         - name: ETH_Vault
-          file: ./abis/ETH_Vault.json
+          file: ETH_Vault/abis/ETH_Vault.json
       eventHandlers:
         - event: AssetRedeemedWithLeveragedToken(indexed address,uint256,uint256,uint256,uint256)
           handler: handleAssetRedeemedWithLeveragedToken
@@ -50,7 +50,7 @@ dataSources:
           handler: handleUsbToLeveragedTokens
         - event: YieldsSettlement(uint256,uint256)
           handler: handleYieldsSettlement
-      file: ./src/eth-vault.ts
+      file: ETH_Vault/ETH_Vault.wasm
   - kind: ethereum
     name: ETH_PtyPoolBelowAARS
     network: sepolia
@@ -73,7 +73,7 @@ dataSources:
         - Withdrawn
       abis:
         - name: ETH_PtyPoolBelowAARS
-          file: ./abis/ETH_PtyPoolBelowAARS.json
+          file: ETH_PtyPoolBelowAARS/abis/ETH_PtyPoolBelowAARS.json
       eventHandlers:
         - event: MatchedTokenPaid(indexed address,uint256)
           handler: handleMatchedTokenPaid
@@ -91,7 +91,7 @@ dataSources:
           handler: handleStakingYieldsPaid
         - event: Withdrawn(indexed address,uint256)
           handler: handleWithdrawn
-      file: ./src/eth-pty-pool-below-aars.ts
+      file: ETH_PtyPoolBelowAARS/ETH_PtyPoolBelowAARS.wasm
   - kind: ethereum
     name: ETH_PtyPoolAboveAARU
     network: sepolia
@@ -114,7 +114,7 @@ dataSources:
         - ETH_PtyPoolAboveAARUWithdrawn
       abis:
         - name: ETH_PtyPoolAboveAARU
-          file: ./abis/ETH_PtyPoolAboveAARU.json
+          file: ETH_PtyPoolAboveAARU/abis/ETH_PtyPoolAboveAARU.json
       eventHandlers:
         - event: MatchedTokenPaid(indexed address,uint256)
           handler: handleMatchedTokenPaid
@@ -132,4 +132,4 @@ dataSources:
           handler: handleStakingYieldsPaid
         - event: Withdrawn(indexed address,uint256)
           handler: handleWithdrawn
-      file: ./src/eth-pty-pool-above-aaru.ts
+      file: ETH_PtyPoolAboveAARU/ETH_PtyPoolAboveAARU.wasm
